@@ -1,0 +1,1 @@
+docker run --rm  -d --name roach -p  12080:8080 -v data:/data  -p 26257:26257 -it cockroachdb/cockroach:v19.1.4 start --insecure --listen-addr=0.0.0.0 --store data

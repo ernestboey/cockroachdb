@@ -1,0 +1,1 @@
+docker run -p 12081:8081 --name pgweb -d -e DATABASE_URL=postgres://root:@192.168.106.195:26257/postgres?sslmode=disable sosedoff/pgweb
