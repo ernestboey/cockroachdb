@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   roach:
     image: cockroachdb/cockroach:v19.1.4
@@ -7,14 +7,12 @@ services:
       - 26257:26257
     volumes:
       - ${PWD}/data:/cockroach/data
-    command: start --insecure --listen-addr=0.0.0.0 --store data 
+    command: start --insecure --listen-addr=0.0.0.0 --store data
   pgweb:
     image: sosedoff/pgweb
-    ports: 
+    ports:
       - 12081:8081
     environment:
-      - DATABASE_URL=postgres://root:@192.168.106.195:26257/postgres?sslmode=disable
-    
-
-    
-
+      - DATABASE_URL=postgres://root:@roach:26257/postgres?sslmode=disable
+    depends_on:
+      - roach
