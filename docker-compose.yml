@@ -2,6 +2,7 @@ version: "3"
 services:
   roach:
     image: cockroachdb/cockroach:v19.1.4
+    restart: always
     ports:
       - 12080:8080
       - 26257:26257
@@ -10,6 +11,7 @@ services:
     command: start --insecure --listen-addr=0.0.0.0 --store data
   pgweb:
     image: sosedoff/pgweb
+    restart: always
     ports:
       - 12081:8081
     environment:
