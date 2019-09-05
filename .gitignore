@@ -1,4 +1,6 @@
 data/*
+data2/*
+data3/*
 !data/.gitkeep
 
 # Created by https://www.gitignore.io/api/linux,macos,windows,visualstudiocode
