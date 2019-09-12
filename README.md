@@ -54,7 +54,13 @@ The raw log files can be found in `/data/logs/cockroach*.log`. It follows [this 
 
 #### Enable Audit Logging
 
-TODO logging configuration
+https://www.cockroachlabs.com/docs/stable/sql-audit-logging.html
+
+> Note: This is an experimental feature
+
+1. `SQL> ALTER TABLE "AuditLog" EXPERIMENTAL_AUDIT SET READ WRITE;`
+2. Do some select query
+3. Check the audit log at `/data/logs/cockroach-sql-audit.log`
 
 ### Backup & Restore
 
