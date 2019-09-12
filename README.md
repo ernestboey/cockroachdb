@@ -79,11 +79,20 @@ https://www.cockroachlabs.com/docs/v19.1/sql-dump.html#restore-a-table-from-a-ba
 
 #### Backup Data (Dump as CSV format)
 
-TODO
+https://www.cockroachlabs.com/docs/stable/export.html#non-distributed-export-using-the-sql-shell
+
+1. `$ docker exec -it cockroachdb_roach1_1 ./cockroach sql --insecure --database=postgres -e 'SELECT * FROM "AuditLog";' --format=csv > dump-file.csv`
 
 #### Restore Data (Using CSV dump)
 
-TODO
+https://www.cockroachlabs.com/docs/v19.1/import.html#import-a-table-from-a-csv-file
+
+> Unable to get this working as they are unable to insert NULL timestamps (eg. startTime)
+
+1. Delete the column names from the CSV file previously created (first line)
+2. Acquire an SQL script with the updated schema of the table (you can do this by dumping to local in .sql)
+3. Host both the .csv and .sql files in a location accessible by all containers (eg. AWS, localhost via `serve`)
+4. `SQL> IMPORT TABLE "AuditLog" CREATE USING 'http://YOUR-URL/schema.sql' CSV DATA ('http://YOUR-URL/dump-file.csv');`
 
 ### Deleting Data
 
